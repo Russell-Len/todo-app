@@ -1,0 +1,9 @@
+.task{
+    max-width: 80%;
+    margin: 16px auto;
+}
+
+.task-actions{
+    display: flex; 
+    justify-content: flex-end;
+}

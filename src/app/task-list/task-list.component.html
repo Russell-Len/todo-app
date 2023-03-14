@@ -1,1 +1,31 @@
-<p>task-list works!</p>
+<div *ngFor="let n of [0,1,2,3]">
+    <mat-card class="task">
+        <mat-card-header>
+            <mat-card-title>Example Title</mat-card-title>
+            <mat-card-subtitle>Category: foo</mat-card-subtitle>
+            <mat-card-subtitle>Due: dd-mon-yyyy</mat-card-subtitle>
+            <mat-card-subtitle>Created on: dd-mon-yyyy</mat-card-subtitle>
+            <mat-card-subtitle>Updated on: dd-mon-yyyy</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <p>
+                Example Description Example Description Example Description Example Description Example Description
+                Example
+                Description Example Description Example Description Example Description Example Description Example
+                Description Example Description
+            </p>
+        </mat-card-content>
+
+        <mat-card-actions class="task-actions">
+            <button mat-button color="primary">
+                <mat-icon>edit</mat-icon>
+                Edit
+            </button>
+            <button mat-button color="warn">
+                <mat-icon>delete</mat-icon>
+                Delete
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
