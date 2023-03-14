@@ -7,3 +7,9 @@
     display: flex; 
     justify-content: flex-end;
 }
+
+.task-add-fab{
+    position: fixed !important;
+    bottom: 15px;
+    right: 15px;
+}
