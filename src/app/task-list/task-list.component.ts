@@ -48,32 +48,20 @@ export class TaskListComponent {
   ]
 
   openAddDialog(): void {
-    const dialogRef = this.dialog.open(TaskAddDialogComponent, {
+    this.dialog.open(TaskAddDialogComponent, {
       data: {},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 
   openEditDialog(): void {
-    const dialogRef = this.dialog.open(TaskEditDialogComponent, {
+    this.dialog.open(TaskEditDialogComponent, {
       data: {},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 
   openDeleteDialog(): void {
-    const dialogRef = this.dialog.open(TaskDeleteDialogComponent, {
+    this.dialog.open(TaskDeleteDialogComponent, {
       data: {},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 
