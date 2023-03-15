@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskAddDialogComponent } from '../task-add-dialog/task-add-dialog.component';
+import { TaskDeleteDialogComponent } from '../task-delete-dialog/task-delete-dialog.component';
 import { TaskEditDialogComponent } from '../task-edit-dialog/task-edit-dialog.component';
 
 @Component({
@@ -24,6 +25,16 @@ export class TaskListComponent {
 
   openEditDialog(): void {
     const dialogRef = this.dialog.open(TaskEditDialogComponent, {
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  openDeleteDialog(): void {
+    const dialogRef = this.dialog.open(TaskDeleteDialogComponent, {
       data: {},
     });
 
