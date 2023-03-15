@@ -19,23 +19,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { NgxMatDatetimePickerModule, NgxMatDateFormats, NGX_MAT_DATE_FORMATS } from '@angular-material-components/datetime-picker';
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 
-export const MOMENT_DATETIME_FORMAT = 'DD-MM-YYYY HH:mm';
-const CUSTOM_MOMENT_FORMATS: NgxMatDateFormats = {
-  parse: {
-    dateInput: MOMENT_DATETIME_FORMAT,
-  },
-  display: {
-    dateInput: MOMENT_DATETIME_FORMAT,
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
 
 @NgModule({
   declarations: [
@@ -58,12 +45,12 @@ const CUSTOM_MOMENT_FORMATS: NgxMatDateFormats = {
     MatInputModule,
     MatFormFieldModule,
     NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
     FormsModule,
     MatDatepickerModule,
-    NgxMatMomentModule,
   ],
   providers: [
-    { provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_MOMENT_FORMATS },
+
   ],
   bootstrap: [AppComponent]
 })
