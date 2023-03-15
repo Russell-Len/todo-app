@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export interface DialogData {
@@ -11,6 +12,8 @@ export interface DialogData {
   styleUrls: ['./task-add-dialog.component.css']
 })
 export class TaskAddDialogComponent {
+  
+  public dateControl = new FormControl(new Date());
 
   constructor(
     public dialogRef: MatDialogRef<TaskAddDialogComponent>,
