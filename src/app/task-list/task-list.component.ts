@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Task } from '../model/Task';
 import { TaskAddDialogComponent } from '../task-add-dialog/task-add-dialog.component';
 import { TaskDeleteDialogComponent } from '../task-delete-dialog/task-delete-dialog.component';
 import { TaskEditDialogComponent } from '../task-edit-dialog/task-edit-dialog.component';
@@ -12,6 +13,39 @@ import { TaskEditDialogComponent } from '../task-edit-dialog/task-edit-dialog.co
 export class TaskListComponent {
 
   constructor(public dialog: MatDialog) { }
+
+  tasks: Task[] = [
+    {
+      id: 0,
+      title: 'Example Title 0',
+      description: 'Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description',
+      dueDate: new Date(),
+      category: 'foo',
+      isDeleted: false,
+      created: new Date(),
+      updated: new Date(),
+    },
+    {
+      id: 1,
+      title: 'Example Title 1',
+      description: 'Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description',
+      dueDate: new Date(),
+      category: 'foo',
+      isDeleted: false,
+      created: new Date(),
+      updated: new Date(),
+    },
+    {
+      id: 2,
+      title: 'Example Title 2',
+      description: 'Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description',
+      dueDate: new Date(),
+      category: 'foo',
+      isDeleted: false,
+      created: new Date(),
+      updated: new Date(),
+    },
+  ]
 
   openAddDialog(): void {
     const dialogRef = this.dialog.open(TaskAddDialogComponent, {
