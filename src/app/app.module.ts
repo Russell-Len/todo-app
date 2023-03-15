@@ -22,7 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxMatDatetimePickerModule, NgxMatDateFormats, NGX_MAT_DATE_FORMATS } from '@angular-material-components/datetime-picker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { NgxMatMomentModule, NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular-material-components/moment-adapter';
+import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 
 export const MOMENT_DATETIME_FORMAT = 'DD-MM-YYYY HH:mm';
 const CUSTOM_MOMENT_FORMATS: NgxMatDateFormats = {
@@ -64,9 +64,7 @@ const CUSTOM_MOMENT_FORMATS: NgxMatDateFormats = {
     NgxMatMomentModule,
   ],
   providers: [
-    { provide: NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     { provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_MOMENT_FORMATS },
-    { provide: NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
   ],
   bootstrap: [AppComponent]
 })
