@@ -4,6 +4,10 @@
     align-items: flex-start;
 }
 
+.dialog-form-field {
+    width: 100%;
+}
+
 .dialog-actions {
     display: flex;
     justify-content: flex-end;
