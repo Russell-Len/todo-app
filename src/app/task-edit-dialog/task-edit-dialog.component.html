@@ -1,1 +1,30 @@
-<p>task-edit-dialog works!</p>
+<h1 mat-dialog-title>Edit Task</h1>
+
+<div mat-dialog-content class="dialog-form">
+    <mat-form-field appearance="fill" class="dialog-form-field">
+        <mat-label>Title</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="dialog-form-field">
+        <mat-label>Description</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="dialog-form-field">
+        <mat-label>Category</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="dialog-form-field">
+        <mat-label>Due Date</mat-label>
+        <input matInput [ngxMatDatetimePicker]="picker" [formControl]="dateControl">
+        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button mat-button color="primary" (click)="onOkClick()">Ok</button>
+</div>
