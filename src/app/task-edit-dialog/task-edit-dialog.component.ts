@@ -13,9 +13,6 @@ export interface DialogData {
 })
 export class TaskEditDialogComponent {
 
-
-  public dateControl = new FormControl(new Date());
-
   constructor(
     public dialogRef: MatDialogRef<TaskEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,

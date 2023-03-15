@@ -20,7 +20,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxMatDatetimePickerModule, NgxMatDateFormats, NGX_MAT_DATE_FORMATS } from '@angular-material-components/datetime-picker';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 
@@ -59,7 +59,6 @@ const CUSTOM_MOMENT_FORMATS: NgxMatDateFormats = {
     MatFormFieldModule,
     NgxMatDatetimePickerModule,
     FormsModule,
-    ReactiveFormsModule,
     MatDatepickerModule,
     NgxMatMomentModule,
   ],

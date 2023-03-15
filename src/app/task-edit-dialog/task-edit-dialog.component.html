@@ -18,7 +18,7 @@
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Due Date</mat-label>
-        <input matInput [ngxMatDatetimePicker]="picker" [formControl]="dateControl">
+        <input matInput [ngxMatDatetimePicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
         <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
     </mat-form-field>
