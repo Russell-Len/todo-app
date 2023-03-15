@@ -1,10 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
-export interface DialogData {
-
-}
+import { MatDialogRef } from '@angular/material/dialog';
+import { Task } from '../model/Task';
 
 @Component({
   selector: 'app-task-add-dialog',
@@ -12,12 +9,16 @@ export interface DialogData {
   styleUrls: ['./task-add-dialog.component.css']
 })
 export class TaskAddDialogComponent {
-  
-  public dateControl = new FormControl(new Date());
+
+  public newTask: Task = {
+    title: '',
+    description: '',
+    dueDate: new Date(),
+    category: '',
+  }
 
   constructor(
     public dialogRef: MatDialogRef<TaskAddDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) { }
 
   onCancelClick(): void {
@@ -25,6 +26,6 @@ export class TaskAddDialogComponent {
   }
 
   onOkClick(): void {
-    console.log("Ok")
+    console.log(this.newTask)
   }
 }

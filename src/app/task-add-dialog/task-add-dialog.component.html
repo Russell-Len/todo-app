@@ -3,22 +3,22 @@
 <div mat-dialog-content class="dialog-form">
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Title</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="newTask.title">
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Description</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput [(ngModel)]="newTask.description"></textarea>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Category</mat-label>
-        <input matInput>
+        <input matInput  [(ngModel)]="newTask.category">
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Due Date</mat-label>
-        <input matInput [ngxMatDatetimePicker]="picker" [formControl]="dateControl">
+        <input matInput [ngxMatDatetimePicker]="picker"  [(ngModel)]="newTask.dueDate">
         <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
         <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
     </mat-form-field>

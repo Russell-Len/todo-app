@@ -48,9 +48,7 @@ export class TaskListComponent {
   ]
 
   openAddDialog(): void {
-    this.dialog.open(TaskAddDialogComponent, {
-      data: {},
-    });
+    this.dialog.open(TaskAddDialogComponent);
   }
 
   openEditDialog(): void {
