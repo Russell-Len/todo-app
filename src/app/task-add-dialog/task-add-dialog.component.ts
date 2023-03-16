@@ -24,7 +24,7 @@ export class TaskAddDialogComponent {
     this.dialogRef.close();
   }
 
-  onOkClick(): void {
-    console.log(this.newTask)
+  onProceedClick(): void {
+    console.log("newTask:", this.newTask)
   }
 }

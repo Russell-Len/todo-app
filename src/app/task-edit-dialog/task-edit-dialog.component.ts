@@ -21,7 +21,7 @@ export class TaskEditDialogComponent {
     this.dialogRef.close();
   }
 
-  onOkClick(): void {
-    console.log("Ok")
+  onProceedClick(): void {
+    console.log("Edited")
   }
 }
