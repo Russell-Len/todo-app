@@ -19,10 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { NgxMatDatetimePickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 import { FormsModule } from '@angular/forms';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-
 
 @NgModule({
   declarations: [
@@ -44,13 +41,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
-    NgxMatDatetimePickerModule,
-    NgxMatNativeDateModule,
     FormsModule,
-    MatDatepickerModule,
   ],
   providers: [
-
   ],
   bootstrap: [AppComponent]
 })
