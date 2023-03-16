@@ -51,16 +51,18 @@ export class TaskListComponent {
   }
 
   openEditDialog(task: Task): void {
+    const taskToEdit: Task = {
+      title: task.title,
+      description: task.description,
+      dueDate: task.dueDate,
+      category: task.category
+    }
 
-    this.dialog.open(TaskEditDialogComponent, {
-      data: { title: 'test' }
-    });
+    this.dialog.open(TaskEditDialogComponent, { data: taskToEdit });
   }
 
   openDeleteDialog(id: number): void {
-    this.dialog.open(TaskDeleteDialogComponent, {
-      data: id,
-    });
+    this.dialog.open(TaskDeleteDialogComponent, { data: id, });
   }
 
 }

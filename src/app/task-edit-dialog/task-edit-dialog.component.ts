@@ -11,7 +11,7 @@ export class TaskEditDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<TaskEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public editedTask: Task,
+    @Inject(MAT_DIALOG_DATA) public task: Task,
   ) { }
 
   onCancelClick(): void {
