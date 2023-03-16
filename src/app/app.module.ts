@@ -20,6 +20,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -42,8 +44,11 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-MY' }
   ],
   bootstrap: [AppComponent]
 })
