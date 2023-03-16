@@ -11,7 +11,6 @@ import { TaskEditDialogComponent } from '../task-edit-dialog/task-edit-dialog.co
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent {
-
   constructor(public dialog: MatDialog) { }
 
   tasks: Task[] = [
@@ -51,9 +50,10 @@ export class TaskListComponent {
     this.dialog.open(TaskAddDialogComponent);
   }
 
-  openEditDialog(): void {
+  openEditDialog(task: Task): void {
+    
     this.dialog.open(TaskEditDialogComponent, {
-      data: {},
+      data: {title: 'test'}
     });
   }
 
