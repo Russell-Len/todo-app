@@ -7,8 +7,10 @@
         <mat-card-header>
             <mat-card-title>{{task.title}}</mat-card-title>
             <mat-card-subtitle>Category: {{task.category}}</mat-card-subtitle>
-            <mat-card-subtitle>Due on: {{task.dueDate}}</mat-card-subtitle>
-            <mat-card-subtitle>Created on: {{task.created}} (Updated on: {{task.updated}})</mat-card-subtitle>
+            <mat-card-subtitle>Due on: {{task.dueDate.toLocaleString('en-MY')}}</mat-card-subtitle>
+            <mat-card-subtitle>
+                Created on: {{task.created!.toLocaleString('en-MY')}} (Updated on:
+                {{task.updated!.toLocaleString('en-MY')}})</mat-card-subtitle>
         </mat-card-header>
 
         <mat-card-content>
