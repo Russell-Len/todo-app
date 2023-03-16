@@ -51,15 +51,15 @@ export class TaskListComponent {
   }
 
   openEditDialog(task: Task): void {
-    
+
     this.dialog.open(TaskEditDialogComponent, {
-      data: {title: 'test'}
+      data: { title: 'test' }
     });
   }
 
-  openDeleteDialog(): void {
+  openDeleteDialog(id: number): void {
     this.dialog.open(TaskDeleteDialogComponent, {
-      data: {},
+      data: id,
     });
   }
 

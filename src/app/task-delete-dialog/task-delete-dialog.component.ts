@@ -1,10 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-export interface DialogData {
-
-}
-
 @Component({
   selector: 'app-task-delete-dialog',
   templateUrl: './task-delete-dialog.component.html',
@@ -14,7 +10,7 @@ export class TaskDeleteDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<TaskDeleteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public id: number,
   ) { }
 
   onCancelClick(): void {
@@ -22,6 +18,6 @@ export class TaskDeleteDialogComponent {
   }
 
   onProceedClick(): void {
-    console.log("Deleted")
+    console.log("Deleted ID: " + this.id)
   }
 }
