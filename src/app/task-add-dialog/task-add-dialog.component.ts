@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Task } from '../model/Task';
+import { ITask } from '../model/ITask';
 
 @Component({
   selector: 'app-task-add-dialog',
@@ -9,7 +9,7 @@ import { Task } from '../model/Task';
 })
 export class TaskAddDialogComponent {
 
-  public newTask: Task = {
+  public newTask: ITask = {
     title: '',
     description: '',
     dueDate: new Date(),

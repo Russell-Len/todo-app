@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TaskAddDialogComponent } from './task-add-dialog/task-add-dialog.component';
@@ -46,6 +47,7 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    HttpClientModule,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-MY' }

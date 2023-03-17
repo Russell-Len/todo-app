@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Task } from '../model/Task';
+import { ITask } from '../model/ITask';
+import { TaskService } from '../services/task.service';
 import { TaskAddDialogComponent } from '../task-add-dialog/task-add-dialog.component';
 import { TaskDeleteDialogComponent } from '../task-delete-dialog/task-delete-dialog.component';
 import { TaskEditDialogComponent } from '../task-edit-dialog/task-edit-dialog.component';
@@ -8,50 +9,24 @@ import { TaskEditDialogComponent } from '../task-edit-dialog/task-edit-dialog.co
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css']
+  styleUrls: ['./task-list.component.css'],
 })
 export class TaskListComponent {
-  constructor(public dialog: MatDialog) { }
 
-  tasks: Task[] = [
-    {
-      id: 0,
-      title: 'Example Title 0',
-      description: 'Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description',
-      dueDate: new Date(),
-      category: 'foo',
-      isDeleted: false,
-      created: new Date(),
-      updated: new Date(),
-    },
-    {
-      id: 1,
-      title: 'Example Title 1',
-      description: 'Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description',
-      dueDate: new Date(),
-      category: 'foo',
-      isDeleted: false,
-      created: new Date(),
-      updated: new Date(),
-    },
-    {
-      id: 2,
-      title: 'Example Title 2',
-      description: 'Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description Example Description',
-      dueDate: new Date(),
-      category: 'foo',
-      isDeleted: false,
-      created: new Date(),
-      updated: new Date(),
-    },
-  ]
+  constructor(public dialog: MatDialog, private taskService: TaskService) { }
+
+  public tasks: ITask[] = [];
+
+  ngOnInit(): void {
+    this.tasks = this.taskService.getTasks();
+  }
 
   openAddDialog(): void {
     this.dialog.open(TaskAddDialogComponent);
   }
 
-  openEditDialog(task: Task): void {
-    const taskToEdit: Task = {
+  openEditDialog(task: ITask): void {
+    const taskToEdit: ITask = {
       title: task.title,
       description: task.description,
       dueDate: task.dueDate,
