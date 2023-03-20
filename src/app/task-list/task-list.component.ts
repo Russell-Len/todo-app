@@ -18,7 +18,13 @@ export class TaskListComponent {
   public tasks: ITask[] = [];
 
   ngOnInit(): void {
-    this.tasks = this.taskService.getTasks();
+
+    this.taskService
+      .getTasks()
+      .subscribe(
+        (result: ITask[]) =>
+          this.tasks = result
+      );
   }
 
   openAddDialog(): void {
