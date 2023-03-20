@@ -18,7 +18,10 @@ export class TaskListComponent {
   public tasks: ITask[] = [];
 
   ngOnInit(): void {
+    this.fetchTasksList();
+  }
 
+  fetchTasksList(): void {
     this.taskService
       .getTasks()
       .subscribe(

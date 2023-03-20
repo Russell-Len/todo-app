@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ITask } from '../model/ITask';
+import { TaskService } from '../services/task.service';
 
 @Component({
   selector: 'app-task-add-dialog',
@@ -18,6 +19,7 @@ export class TaskAddDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<TaskAddDialogComponent>,
+    private taskService: TaskService
   ) { }
 
   onCancelClick(): void {
@@ -25,6 +27,10 @@ export class TaskAddDialogComponent {
   }
 
   onProceedClick(): void {
-    console.log("newTask:", this.newTask)
+    this.taskService
+      .addTask(this.newTask)
+      .subscribe();
+
+    this.dialogRef.close();
   }
 }

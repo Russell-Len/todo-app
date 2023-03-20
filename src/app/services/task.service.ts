@@ -4,15 +4,20 @@ import { Observable } from "rxjs";
 import { ITask } from '../model/ITask';
 
 @Injectable({
-    providedIn:'root'
+    providedIn: 'root'
 })
 export class TaskService {
 
-    private tasksApiUrl = 'https://localhost:7016/api/tasks'; 
+    private tasksApiUrl = 'https://localhost:7016/api/tasks';
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient) { }
 
     getTasks(): Observable<ITask[]> {
-       return this.http.get<ITask[]>(`${this.tasksApiUrl}/GetTasks`);
+        return this.http.get<ITask[]>(`${this.tasksApiUrl}/GetTasks`);
     }
+
+    addTask(newTask: ITask): Observable<any> {
+        return this.http.post(`${this.tasksApiUrl}/AddTask`, newTask);
+    }
+
 }
