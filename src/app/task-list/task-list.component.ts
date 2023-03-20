@@ -52,7 +52,11 @@ export class TaskListComponent {
   }
 
   openDeleteDialog(id: number): void {
-    this.dialog.open(TaskDeleteDialogComponent, { data: id, });
+    const dialogRef = this.dialog.open(TaskDeleteDialogComponent, { data: id, });
+
+    dialogRef.afterClosed().subscribe(() =>
+      this.fetchTasksList()
+    );
   }
 
 }
