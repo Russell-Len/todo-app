@@ -20,4 +20,7 @@ export class TaskService {
         return this.http.post(`${this.tasksApiUrl}/AddTask`, newTask);
     }
 
+    editTask(task: ITask): Observable<any> {
+        return this.http.put(`${this.tasksApiUrl}/EditTask`, task);
+    }
 }

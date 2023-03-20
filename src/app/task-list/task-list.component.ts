@@ -24,10 +24,7 @@ export class TaskListComponent {
   fetchTasksList(): void {
     this.taskService
       .getTasks()
-      .subscribe(
-        (result: ITask[]) =>
-          this.tasks = result
-      );
+      .subscribe((result: ITask[]) => this.tasks = result);
   }
 
   openAddDialog(): void {
@@ -40,13 +37,18 @@ export class TaskListComponent {
 
   openEditDialog(task: ITask): void {
     const taskToEdit: ITask = {
+      id: task.id,
       title: task.title,
       description: task.description,
       dueDate: task.dueDate,
       category: task.category
     }
 
-    this.dialog.open(TaskEditDialogComponent, { data: taskToEdit });
+    const dialogRef = this.dialog.open(TaskEditDialogComponent, { data: taskToEdit });
+
+    dialogRef.afterClosed().subscribe(() =>
+      this.fetchTasksList()
+    );
   }
 
   openDeleteDialog(id: number): void {
