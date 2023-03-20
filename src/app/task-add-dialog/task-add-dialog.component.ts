@@ -17,6 +17,8 @@ export class TaskAddDialogComponent {
     category: '',
   }
 
+  public dueTime: string = "12:00";
+
   constructor(
     public dialogRef: MatDialogRef<TaskAddDialogComponent>,
     private taskService: TaskService
@@ -27,6 +29,11 @@ export class TaskAddDialogComponent {
   }
 
   onProceedClick(): void {
+
+    let dueDateTime = new Date(`${this.newTask.dueDate.toDateString()} ${this.dueTime}`);
+
+    this.newTask.dueDate = dueDateTime;
+
     this.taskService
       .addTask(this.newTask)
       .subscribe();

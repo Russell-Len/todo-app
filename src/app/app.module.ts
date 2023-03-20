@@ -24,6 +24,9 @@ import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
+//3rd-Party Components
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +51,7 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule,
+    NgxMatTimepickerModule,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-MY' }
