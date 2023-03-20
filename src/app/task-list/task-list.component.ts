@@ -31,7 +31,11 @@ export class TaskListComponent {
   }
 
   openAddDialog(): void {
-    this.dialog.open(TaskAddDialogComponent);
+    const dialogRef = this.dialog.open(TaskAddDialogComponent);
+
+    dialogRef.afterClosed().subscribe(() =>
+      this.fetchTasksList()
+    );
   }
 
   openEditDialog(task: ITask): void {
