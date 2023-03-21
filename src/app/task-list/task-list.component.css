@@ -1,16 +1,23 @@
-.task{
+.task {
     max-width: 80%;
     margin: 16px auto;
 }
 
-.task-actions{
-    display: flex; 
+.task-actions {
+    display: flex;
     justify-content: flex-end;
 }
 
-.task-add-fab{
+.task-add-fab {
     position: fixed !important;
     bottom: 16px;
     right: 16px;
     z-index: 1000;
+}
+
+.no-task {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
