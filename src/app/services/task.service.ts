@@ -13,19 +13,19 @@ export class TaskService {
     constructor(private http: HttpClient) { }
 
     getTasks(): Observable<ITask[]> {
-        return this.http.get<ITask[]>(`${this.tasksApiUrl}/GetTasks`);
+        return this.http.get<ITask[]>(this.tasksApiUrl);
     }
 
     addTask(newTask: ITask): Observable<any> {
-        return this.http.post(`${this.tasksApiUrl}/AddTask`, newTask);
+        return this.http.post(this.tasksApiUrl, newTask);
     }
 
     editTask(task: ITask): Observable<any> {
-        return this.http.put(`${this.tasksApiUrl}/EditTask`, task);
+        return this.http.put(this.tasksApiUrl, task);
     }
 
     deleteTask(id: number): Observable<any> {
-        return this.http.delete(`${this.tasksApiUrl}/DeleteTask/${id}`);
+        return this.http.delete(`${this.tasksApiUrl}/${id}`);
     }
 
     getDueDateTime(dueDate: Date, dueTime: string): Date {
