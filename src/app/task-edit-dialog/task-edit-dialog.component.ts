@@ -25,10 +25,7 @@ export class TaskEditDialogComponent {
   }
 
   onProceedClick(): void {
-
-    let dueDateTime = `${this.task.dueDate.toDateString()} ${this.dueTime}`;
-
-    this.task.dueDate = new Date(dueDateTime);
+    this.task.dueDate = this.taskService.getDueDateTime(this.task.dueDate, this.dueTime);
 
     this.taskService
       .editTask(this.task)

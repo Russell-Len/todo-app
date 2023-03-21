@@ -27,4 +27,9 @@ export class TaskService {
     deleteTask(id: number): Observable<any> {
         return this.http.delete(`${this.tasksApiUrl}/DeleteTask/${id}`);
     }
+
+    getDueDateTime(dueDate: Date, dueTime: string): Date {
+        let dueDateTime = `${dueDate.toDateString()} ${dueTime}`;
+        return new Date(dueDateTime);
+    }
 }
