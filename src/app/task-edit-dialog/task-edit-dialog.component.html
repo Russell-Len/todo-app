@@ -16,11 +16,18 @@
         <input matInput [(ngModel)]="task.category">
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="dialog-form-field">
+    <mat-form-field appearance="fill">
         <mat-label>Due Date</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="task.dueDate">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <input matInput [matDatepicker]="datePicker" [(ngModel)]="task.dueDate" (click)="datePicker.open()" readonly>
+        <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Due Time</mat-label>
+        <input matInput [(ngModel)]="dueTime" [format]="24" [ngxMatTimepicker]="timePicker" readonly />
+        <ngx-mat-timepicker-toggle matIconSuffix [for]="timePicker"></ngx-mat-timepicker-toggle>
+        <ngx-mat-timepicker #timePicker></ngx-mat-timepicker>
     </mat-form-field>
 </div>
 

@@ -24,7 +24,12 @@ export class TaskListComponent {
   fetchTasksList(): void {
     this.taskService
       .getTasks()
-      .subscribe((result: ITask[]) => this.tasks = result);
+      .subscribe((result: ITask[]) => {
+        this.tasks = result.map(task => {
+          task.dueDate = new Date(task.dueDate)
+          return task;
+        });
+      });
   }
 
   openAddDialog(): void {

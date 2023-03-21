@@ -30,9 +30,9 @@ export class TaskAddDialogComponent {
 
   onProceedClick(): void {
 
-    let dueDateTime = new Date(`${this.newTask.dueDate.toDateString()} ${this.dueTime}`);
+    let dueDateTime = `${this.newTask.dueDate.toDateString()} ${this.dueTime}`;
 
-    this.newTask.dueDate = dueDateTime;
+    this.newTask.dueDate = new Date(dueDateTime);
 
     this.taskService
       .addTask(this.newTask)
