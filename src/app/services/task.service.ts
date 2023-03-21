@@ -3,12 +3,15 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ITask } from '../model/ITask';
 
+import { APIPaths } from "../enums/enums";
+import { environment } from "src/environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 export class TaskService {
 
-    private tasksApiUrl = 'https://localhost:7016/api/tasks';
+    private tasksApiUrl = `${environment.apiBaseURL}/${APIPaths.Tasks}`;
 
     constructor(private http: HttpClient) { }
 
