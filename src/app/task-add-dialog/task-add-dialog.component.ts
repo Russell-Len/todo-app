@@ -33,8 +33,6 @@ export class TaskAddDialogComponent {
 
     this.taskService
       .addTask(this.newTask)
-      .subscribe();
-
-    this.dialogRef.close();
+      .subscribe(() => this.dialogRef.close());
   }
 }

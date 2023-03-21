@@ -22,8 +22,6 @@ export class TaskDeleteDialogComponent {
   onProceedClick(): void {
     this.taskService
       .deleteTask(this.id)
-      .subscribe();
-
-    this.dialogRef.close();
+      .subscribe(()=> this.dialogRef.close());
   }
 }

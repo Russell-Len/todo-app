@@ -29,9 +29,7 @@ export class TaskEditDialogComponent {
 
     this.taskService
       .editTask(this.task)
-      .subscribe();
-
-    this.dialogRef.close();
+      .subscribe(() => this.dialogRef.close());
   }
 
 }
