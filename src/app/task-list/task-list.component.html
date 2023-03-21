@@ -2,7 +2,7 @@
     <mat-icon>add</mat-icon>
 </button>
 
-<div *ngIf="tasks.length">
+<div *ngIf="tasks.length; else noTasks">
     <div *ngFor="let task of tasks">
         <mat-card class="task">
             <mat-card-header>
@@ -33,6 +33,6 @@
     </div>
 </div>
 
-<div *ngIf="!tasks.length" class="no-task">
-    <p>No task(s) found. Start adding tasks by clicking on the "+" button.</p>
-</div>
+<ng-template #noTasks>
+    <div class="no-task">No task(s) found. Start adding tasks by clicking on the "+" button.</div>
+</ng-template>
