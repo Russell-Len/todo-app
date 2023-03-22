@@ -1,0 +1,15 @@
+.dialog-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 25vw;
+}
+
+.dialog-form-field {
+    width: 100%;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+}
