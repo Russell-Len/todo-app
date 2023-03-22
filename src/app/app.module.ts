@@ -26,6 +26,8 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 //3rd-Party Components
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+import { AuthorLoginDialogComponent } from './author-login-dialog/author-login-dialog.component';
+import { AuthorRegisterDialogComponent } from './author-register-dialog/author-register-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     TaskEditDialogComponent,
     TaskDeleteDialogComponent,
     TaskListComponent,
+    AuthorLoginDialogComponent,
+    AuthorRegisterDialogComponent,
   ],
   imports: [
     BrowserModule,
