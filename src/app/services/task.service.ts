@@ -11,7 +11,9 @@ export class TaskService {
 
     private tasksApiUrl = `${environment.apiBaseURL}/tasks`;
 
-    private headers = { headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`) }
+    private headers = {
+        headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+    }
 
     constructor(private http: HttpClient) { }
 
