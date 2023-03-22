@@ -11,6 +11,8 @@ export class AuthService {
 
   private authApiUrl = `${environment.apiBaseURL}/auth`;
 
+  public isLoggedIn: boolean = localStorage.getItem('token') !== null;
+
   constructor(private http: HttpClient) { }
 
   login(credentials: ICredentials): Observable<any> {
@@ -21,6 +23,9 @@ export class AuthService {
     return this.http.post(`${this.authApiUrl}/register`, credentials);
   }
 
-  //logout
+  logout(): void {
+    localStorage.removeItem("token");
+    this.isLoggedIn = false;
+  }
 
 }

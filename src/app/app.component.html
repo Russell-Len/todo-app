@@ -1,6 +1,6 @@
 <app-toolbar></app-toolbar>
 
-<div *ngIf="isLoggedIn; else loggedOut">
+<div *ngIf="authService.isLoggedIn; else loggedOut">
     <app-task-list></app-task-list>
 </div>
 

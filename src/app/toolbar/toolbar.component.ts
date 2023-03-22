@@ -10,15 +10,15 @@ import { AuthorRegisterDialogComponent } from '../author-register-dialog/author-
 })
 export class ToolbarComponent {
 
-  constructor(public dialog: MatDialog){}
+  constructor(public dialog: MatDialog) { }
 
-  openLoginDialog() : void{
+  openLoginDialog(): void {
     const dialogRef = this.dialog.open(AuthorLoginDialogComponent);
 
     dialogRef.afterClosed().subscribe();
   }
 
-  openRegisterDialog() : void{
+  openRegisterDialog(): void {
     const dialogRef = this.dialog.open(AuthorRegisterDialogComponent);
 
     dialogRef.afterClosed().subscribe();
