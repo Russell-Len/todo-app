@@ -2,8 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ITask } from '../model/ITask';
-
-import { APIPaths } from "../enums/enums";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -11,7 +9,7 @@ import { environment } from "src/environments/environment";
 })
 export class TaskService {
 
-    private tasksApiUrl = `${environment.apiBaseURL}/${APIPaths.Tasks}`;
+    private tasksApiUrl = `${environment.apiBaseURL}/tasks`;
 
     constructor(private http: HttpClient) { }
 
