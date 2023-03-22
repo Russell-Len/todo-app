@@ -2,12 +2,22 @@
     <span>ToDo App</span>
 
     <span class="toolbar-spacer"></span>
-    
-    <button mat-button (click)="openLoginDialog()">
-        Login
-    </button>
 
-    <button mat-button (click)="openRegisterDialog()">
-        Register
-    </button>
+    <div *ngIf="!authService.isLoggedIn; else loggedIn">
+        <button mat-button (click)="openLoginDialog()">
+            Login
+        </button>
+
+        <button mat-button (click)="openRegisterDialog()">
+            Register
+        </button>
+    </div>
+
+    <ng-template #loggedIn>
+        <button mat-button (click)="openLogoutDialog()">
+            Logout
+        </button>
+    </ng-template>
+
+
 </mat-toolbar>

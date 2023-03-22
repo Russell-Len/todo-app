@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthorLoginDialogComponent } from '../author-login-dialog/author-login-dialog.component';
+import { AuthorLogoutDialogComponent } from '../author-logout-dialog/author-logout-dialog.component';
 import { AuthorRegisterDialogComponent } from '../author-register-dialog/author-register-dialog.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,18 +12,21 @@ import { AuthorRegisterDialogComponent } from '../author-register-dialog/author-
 })
 export class ToolbarComponent {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public authService: AuthService
+  ) { }
 
   openLoginDialog(): void {
-    const dialogRef = this.dialog.open(AuthorLoginDialogComponent);
-
-    dialogRef.afterClosed().subscribe();
+    this.dialog.open(AuthorLoginDialogComponent);
   }
 
   openRegisterDialog(): void {
-    const dialogRef = this.dialog.open(AuthorRegisterDialogComponent);
+    this.dialog.open(AuthorRegisterDialogComponent);
+  }
 
-    dialogRef.afterClosed().subscribe();
+  openLogoutDialog(): void {
+    this.dialog.open(AuthorLogoutDialogComponent);
   }
 
 }
