@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -17,7 +17,9 @@ export class AuthService {
     return this.http.post(`${this.authApiUrl}/login`, credentials, { responseType: 'text' });
   }
 
-  //register
+  register(credentials: ICredentials): Observable<any> {
+    return this.http.post(`${this.authApiUrl}/register`, credentials);
+  }
 
   //logout
 

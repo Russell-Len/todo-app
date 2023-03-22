@@ -1,1 +1,18 @@
-<p>author-register-dialog works!</p>
+<h1 mat-dialog-title>Register</h1>
+
+<div mat-dialog-content class="dialog-form">
+    <mat-form-field appearance="fill" class="dialog-form-field">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="credentials.username" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="dialog-form-field">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [(ngModel)]="credentials.password" required>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button mat-button color="primary" (click)="onRegisterClick()">Register</button>
+</div>
