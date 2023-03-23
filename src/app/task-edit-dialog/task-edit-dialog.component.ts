@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { ITask } from '../model/ITask';
+import { SnackbarService } from '../services/snackbar.service';
 import { TaskService } from '../services/task.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class TaskEditDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<TaskEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public taskToEdit: ITask,
-    private taskService: TaskService
+    private taskService: TaskService,
+    public snackbarService: SnackbarService,
   ) {
     this.dueTime = moment(this.taskToEdit.dueDate).format('HH:mm')
   }
@@ -29,7 +31,10 @@ export class TaskEditDialogComponent {
 
     this.taskService
       .editTask(this.taskToEdit)
-      .subscribe(() => this.dialogRef.close());
+      .subscribe(() => {
+        this.snackbarService.openSnackBar("Task updated successfully!");
+        this.dialogRef.close();
+      });
   }
 
 }

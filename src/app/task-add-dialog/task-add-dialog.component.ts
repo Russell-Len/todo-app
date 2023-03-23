@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ITask } from '../model/ITask';
+import { SnackbarService } from '../services/snackbar.service';
 import { TaskService } from '../services/task.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class TaskAddDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<TaskAddDialogComponent>,
-    private taskService: TaskService
+    private taskService: TaskService,
+    public snackbarService: SnackbarService,
   ) { }
 
   onCancelClick(): void {
@@ -33,6 +35,9 @@ export class TaskAddDialogComponent {
 
     this.taskService
       .addTask(this.newTask)
-      .subscribe(() => this.dialogRef.close());
+      .subscribe(() => {
+        this.snackbarService.openSnackBar("Task added successfully!");
+        this.dialogRef.close();
+      });
   }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ICredentials } from '../model/ICredentials';
 import { AuthService } from '../services/auth.service';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-author-login-dialog',
@@ -16,7 +17,8 @@ export class AuthorLoginDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<AuthorLoginDialogComponent>,
-    public authService: AuthService
+    public authService: AuthService,
+    public snackbarService: SnackbarService,
   ) { }
 
   onCancelClick(): void {
@@ -29,6 +31,8 @@ export class AuthorLoginDialogComponent {
         localStorage.setItem('token', token);
         this.authService.isLoggedIn = true;
         this.authService.setAuthor(token);
+
+        this.snackbarService.openSnackBar("Logged in successfully!");
 
         this.dialogRef.close();
       });

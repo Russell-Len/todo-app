@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ICredentials } from '../model/ICredentials';
 import { AuthService } from '../services/auth.service';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-author-register-dialog',
@@ -15,7 +16,8 @@ export class AuthorRegisterDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<AuthorRegisterDialogComponent>,
-    public authService: AuthService
+    public authService: AuthService,
+    public snackbarService: SnackbarService,
   ) { }
 
   onCancelClick(): void {
@@ -24,8 +26,9 @@ export class AuthorRegisterDialogComponent {
 
   onRegisterClick(): void {
     this.authService.register(this.credentials)
-      .subscribe(() =>
-        this.dialogRef.close()
-      );
+      .subscribe(() => {
+        this.snackbarService.openSnackBar("Registered successfully!");
+        this.dialogRef.close();
+      });
   }
 }

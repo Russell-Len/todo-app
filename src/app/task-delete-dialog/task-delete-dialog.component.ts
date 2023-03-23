@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { SnackbarService } from '../services/snackbar.service';
 import { TaskService } from '../services/task.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class TaskDeleteDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<TaskDeleteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public id: number,
-    private taskService: TaskService
+    private taskService: TaskService,
+    public snackbarService: SnackbarService,
   ) { }
 
   onCancelClick(): void {
@@ -22,6 +24,9 @@ export class TaskDeleteDialogComponent {
   onProceedClick(): void {
     this.taskService
       .deleteTask(this.id)
-      .subscribe(()=> this.dialogRef.close());
+      .subscribe(()=> {
+        this.snackbarService.openSnackBar("Task deleted successfully!");
+        this.dialogRef.close();
+      });
   }
 }
