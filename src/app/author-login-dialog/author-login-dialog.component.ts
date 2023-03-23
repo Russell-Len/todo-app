@@ -38,9 +38,8 @@ export class AuthorLoginDialogComponent {
           let message: string = '';
 
           switch (err.status) {
-            default:
             case 401:
-              message = 'Login Failed. Please ensure your credentials are valid.';
+              message = 'Login failed. Please ensure your credentials are valid.';
               break;
             case 500:
               message = 'An error occured on our end. Please try again later.';
@@ -48,6 +47,8 @@ export class AuthorLoginDialogComponent {
             case 0:
               message = 'Error communicating with server. Please check your internet connection.';
               break;
+            default:
+              message = 'An unknown error occured';
           }
 
           this.snackbarService.openSnackBar(message);

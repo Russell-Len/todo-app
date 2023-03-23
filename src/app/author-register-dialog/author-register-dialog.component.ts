@@ -26,9 +26,29 @@ export class AuthorRegisterDialogComponent {
 
   onRegisterClick(): void {
     this.authService.register(this.credentials)
-      .subscribe(() => {
-        this.snackbarService.openSnackBar("Registered successfully!");
-        this.dialogRef.close();
+      .subscribe({
+        next: () => {
+          this.snackbarService.openSnackBar("Registered successfully!");
+          this.dialogRef.close();
+        },
+        error: (err) => {
+          let message: string = '';
+
+          switch (err.status) {
+            case 422:
+              message = 'Registration failed. Username already in use.';
+              break;
+            case 500:
+              message = 'An error occured on our end. Please try again later.';
+              break;
+            case 0:
+              message = 'Error communicating with server. Please check your internet connection.';
+              break;
+            default:
+              message = 'An unknown error occured';
+          }
+          this.snackbarService.openSnackBar(message);
+        }
       });
   }
 }
