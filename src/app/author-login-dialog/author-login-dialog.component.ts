@@ -27,11 +27,31 @@ export class AuthorLoginDialogComponent {
 
   onLoginClick(): void {
     this.authService.login(this.credentials)
-      .subscribe((token: string) => {
-        this.authService.setSession(token);
+      .subscribe({
+        next: (token: string) => {
+          this.authService.setSession(token);
 
-        this.snackbarService.openSnackBar("Logged in successfully!");
-        this.dialogRef.close();
+          this.snackbarService.openSnackBar("Logged in successfully!");
+          this.dialogRef.close();
+        },
+        error: (err) => {
+          let message: string = '';
+
+          switch (err.status) {
+            default:
+            case 401:
+              message = 'Login Failed. Please ensure your credentials are valid.';
+              break;
+            case 500:
+              message = 'An error occured on our end. Please try again later.';
+              break;
+            case 0:
+              message = 'Error communicating with server. Please check your internet connection.';
+              break;
+          }
+
+          this.snackbarService.openSnackBar(message);
+        }
       });
   }
 

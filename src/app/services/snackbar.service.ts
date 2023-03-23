@@ -8,13 +8,14 @@ export class SnackbarService {
 
   constructor(private _snackBar: MatSnackBar) { }
 
-  openSnackBar(message: string) {
+  openSnackBar(message: string): void {
     let snackBarRef = this._snackBar.open(
       message,
       'OK',
-      { duration: 3000 }
+      { duration: 5000 }
     );
 
     snackBarRef.onAction().subscribe(() => snackBarRef.dismiss());
   }
+
 }
