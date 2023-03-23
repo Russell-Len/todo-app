@@ -7,4 +7,5 @@ export interface ITask {
     isDeleted?: boolean,
     created?: Date,
     updated?: Date
+    authorId?: number
 }

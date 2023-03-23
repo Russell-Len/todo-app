@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ITask } from '../model/ITask';
+import { AuthService } from '../services/auth.service';
 import { SnackbarService } from '../services/snackbar.service';
 import { TaskService } from '../services/task.service';
 
@@ -24,6 +25,7 @@ export class TaskAddDialogComponent {
     public dialogRef: MatDialogRef<TaskAddDialogComponent>,
     private taskService: TaskService,
     public snackbarService: SnackbarService,
+    public authService: AuthService
   ) { }
 
   onCancelClick(): void {
@@ -32,6 +34,7 @@ export class TaskAddDialogComponent {
 
   onProceedClick(): void {
     this.newTask.dueDate = this.taskService.getDueDateTime(this.newTask.dueDate, this.dueTime);
+    this.newTask.authorId = this.authService.author.authorId;
 
     this.taskService
       .addTask(this.newTask)
