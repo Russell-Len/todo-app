@@ -1,3 +1,4 @@
 export interface IToken {
-    username: string
+    username: string,
+    exp: number
 }
