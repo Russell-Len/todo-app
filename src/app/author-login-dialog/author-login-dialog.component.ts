@@ -28,7 +28,10 @@ export class AuthorLoginDialogComponent {
       .subscribe((token: string) => {
         localStorage.setItem('token', token);
         this.authService.isLoggedIn = true;
+        this.authService.setAuthor(token);
+
         this.dialogRef.close();
       });
   }
+
 }
