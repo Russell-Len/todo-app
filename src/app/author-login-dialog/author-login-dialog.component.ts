@@ -25,7 +25,7 @@ export class AuthorLoginDialogComponent {
 
   onLoginClick(): void {
     this.authService.login(this.credentials)
-      .subscribe((token: string) =>{
+      .subscribe((token: string) => {
         localStorage.setItem('token', token);
         this.authService.isLoggedIn = true;
         this.dialogRef.close();
