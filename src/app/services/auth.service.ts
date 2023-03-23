@@ -18,8 +18,7 @@ export class AuthService {
 
   public isLoggedIn: boolean = this.token !== null;
 
-  public author: IAuthor =
-    this.token != null ? this.getAuthorFromToken(this.token) : { authorId: 0, username: '' };
+  public author: IAuthor = this.token != null ? this.getAuthorFromToken(this.token) : { authorId: 0, username: '' };
 
   public headers = { headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`) }
 
