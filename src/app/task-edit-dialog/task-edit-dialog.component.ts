@@ -14,10 +14,10 @@ export class TaskEditDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<TaskEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public task: ITask,
+    @Inject(MAT_DIALOG_DATA) public taskToEdit: ITask,
     private taskService: TaskService
   ) {
-    this.dueTime = moment(this.task.dueDate).format('HH:mm')
+    this.dueTime = moment(this.taskToEdit.dueDate).format('HH:mm')
   }
 
   onCancelClick(): void {
@@ -25,10 +25,10 @@ export class TaskEditDialogComponent {
   }
 
   onProceedClick(): void {
-    this.task.dueDate = this.taskService.getDueDateTime(this.task.dueDate, this.dueTime);
+    this.taskToEdit.dueDate = this.taskService.getDueDateTime(this.taskToEdit.dueDate, this.dueTime);
 
     this.taskService
-      .editTask(this.task)
+      .editTask(this.taskToEdit)
       .subscribe(() => this.dialogRef.close());
   }
 

@@ -3,29 +3,30 @@
 <div mat-dialog-content class="dialog-form">
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Title</mat-label>
-        <input matInput [(ngModel)]="task.title">
+        <input matInput [(ngModel)]="taskToEdit.title" required>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="task.description"></textarea>
+        <textarea matInput [(ngModel)]="taskToEdit.description"></textarea>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Category</mat-label>
-        <input matInput [(ngModel)]="task.category">
+        <input matInput [(ngModel)]="taskToEdit.category" required>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Due Date</mat-label>
-        <input matInput [matDatepicker]="datePicker" [(ngModel)]="task.dueDate" (click)="datePicker.open()" readonly>
+        <input matInput [matDatepicker]="datePicker" [(ngModel)]="taskToEdit.dueDate" (click)="datePicker.open()"
+            required readonly>
         <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
         <mat-datepicker #datePicker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Due Time</mat-label>
-        <input matInput [(ngModel)]="dueTime" [format]="24" [ngxMatTimepicker]="timePicker" readonly />
+        <input matInput [(ngModel)]="dueTime" [format]="24" [ngxMatTimepicker]="timePicker" required readonly />
         <ngx-mat-timepicker-toggle matIconSuffix [for]="timePicker"></ngx-mat-timepicker-toggle>
         <ngx-mat-timepicker #timePicker></ngx-mat-timepicker>
     </mat-form-field>
@@ -33,5 +34,8 @@
 
 <div mat-dialog-actions class="dialog-actions">
     <button mat-button (click)="onCancelClick()">Cancel</button>
-    <button mat-button color="primary" (click)="onProceedClick()">Proceed</button>
+    <button mat-button color="primary" (click)="onProceedClick()"
+        [disabled]="taskToEdit.title.trim() ==='' || taskToEdit.category.trim() === ''">
+        Proceed
+    </button>
 </div>
