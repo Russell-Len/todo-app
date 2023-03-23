@@ -1,4 +1,4 @@
 export interface IToken {
-    sub: number,
+    authorId: number,
     username: string
 }

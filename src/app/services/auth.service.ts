@@ -39,7 +39,7 @@ export class AuthService {
   private getAuthor(token: string): IAuthor {
     const decodedToken: IToken = jwt_decode(token);
     return {
-      authorId: decodedToken.sub,
+      authorId: decodedToken.authorId,
       username: decodedToken.username
     }
   }
