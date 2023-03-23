@@ -22,6 +22,8 @@ export class AuthService {
 
   public headers = { headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`) }
 
+  timeout: any;
+
   constructor(private http: HttpClient) { }
 
   login(credentials: ICredentials): Observable<any> {
