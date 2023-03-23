@@ -31,9 +31,33 @@ export class TaskEditDialogComponent {
 
     this.taskService
       .editTask(this.taskToEdit)
-      .subscribe(() => {
-        this.snackbarService.openSnackBar("Task updated successfully!");
-        this.dialogRef.close();
+      .subscribe({
+        next: () => {
+          this.snackbarService.openSnackBar("Task updated successfully!");
+          this.dialogRef.close();
+        },
+        error: (err) => {
+          let message: string = '';
+
+          switch (err.status) {
+            case 401:
+              message = 'Update task failed. Please ensure your credentials are valid.';
+              break;
+            case 400:
+              message = 'Update task failed. A bad request was made.';
+              break;
+            case 500:
+              message = 'An error occured on our end. Please try again later.';
+              break;
+            case 0:
+              message = 'Error communicating with server. Please check your internet connection.';
+              break;
+            default:
+              message = 'Update task failed. An unknown error occured';
+          }
+
+          this.snackbarService.openSnackBar(message);
+        }
       });
   }
 

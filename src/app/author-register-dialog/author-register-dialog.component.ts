@@ -38,6 +38,9 @@ export class AuthorRegisterDialogComponent {
             case 422:
               message = 'Registration failed. Username already in use.';
               break;
+            case 400:
+              message = 'A bad request was made.';
+              break;
             case 500:
               message = 'An error occured on our end. Please try again later.';
               break;

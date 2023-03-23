@@ -37,9 +37,33 @@ export class TaskAddDialogComponent {
 
     this.taskService
       .addTask(this.newTask)
-      .subscribe(() => {
-        this.snackbarService.openSnackBar("Task added successfully!");
-        this.dialogRef.close();
+      .subscribe({
+        next: () => {
+          this.snackbarService.openSnackBar("Task added successfully!");
+          this.dialogRef.close();
+        },
+        error: (err) => {
+          let message: string = '';
+
+          switch (err.status) {
+            case 401:
+              message = 'Add task failed. Please ensure your credentials are valid.';
+              break;
+            case 400:
+              message = 'Add task failed. A bad request was made.';
+              break;
+            case 500:
+              message = 'An error occured on our end. Please try again later.';
+              break;
+            case 0:
+              message = 'Add task failed. Error communicating with server. Please check your internet connection.';
+              break;
+            default:
+              message = 'An unknown error occured';
+          }
+
+          this.snackbarService.openSnackBar(message);
+        }
       });
   }
 }
