@@ -41,11 +41,8 @@ export class AuthService {
     return {
       authorId: decodedToken.authorId,
       username: decodedToken.username
-    }
+    };
   }
 
-  setAuthor(token: string): void {
-    this.author = this.getAuthor(token)
-  }
-
+  setAuthor(token: string): void { this.author = this.getAuthor(token); }
 }
