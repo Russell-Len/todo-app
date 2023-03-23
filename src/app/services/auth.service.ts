@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -17,13 +17,27 @@ export class AuthService {
   public token = localStorage.getItem('token');
 
   public isLoggedIn: boolean = this.token !== null;
+
   public author: IAuthor =
-    this.token != null ? this.getAuthor(this.token) : { authorId: 0, username: '' };
+    this.token != null ? this.getAuthorFromToken(this.token) : { authorId: 0, username: '' };
+
+  public headers = { headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`) }
 
   constructor(private http: HttpClient) { }
 
   login(credentials: ICredentials): Observable<any> {
     return this.http.post(`${this.authApiUrl}/login`, credentials, { responseType: 'text' });
+  }
+
+  setSession(token: string): void {
+    localStorage.setItem('token', token);
+
+    this.token = token;
+    this.isLoggedIn = true;
+    this.author = this.getAuthorFromToken(token);
+
+    //Update headers for task.service usage
+    this.headers = { headers: new HttpHeaders().set('Authorization', `Bearer ${token}`) }
   }
 
   register(credentials: ICredentials): Observable<any> {
@@ -32,17 +46,17 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem("token");
+
+    this.token = null;
     this.isLoggedIn = false;
     this.author = { authorId: 0, username: '' };
   }
 
-  private getAuthor(token: string): IAuthor {
+  private getAuthorFromToken(token: string): IAuthor {
     const decodedToken: IToken = jwt_decode(token);
     return {
       authorId: decodedToken.authorId,
       username: decodedToken.username
     };
   }
-
-  setAuthor(token: string): void { this.author = this.getAuthor(token); }
 }

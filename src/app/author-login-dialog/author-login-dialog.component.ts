@@ -28,12 +28,9 @@ export class AuthorLoginDialogComponent {
   onLoginClick(): void {
     this.authService.login(this.credentials)
       .subscribe((token: string) => {
-        localStorage.setItem('token', token);
-        this.authService.isLoggedIn = true;
-        this.authService.setAuthor(token);
+        this.authService.setSession(token);
 
         this.snackbarService.openSnackBar("Logged in successfully!");
-
         this.dialogRef.close();
       });
   }
