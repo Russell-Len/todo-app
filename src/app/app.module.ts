@@ -10,6 +10,9 @@ import { TaskAddDialogComponent } from './task-add-dialog/task-add-dialog.compon
 import { TaskEditDialogComponent } from './task-edit-dialog/task-edit-dialog.component';
 import { TaskDeleteDialogComponent } from './task-delete-dialog/task-delete-dialog.component';
 import { TaskListComponent } from './task-list/task-list.component';
+import { AuthorLoginDialogComponent } from './author-login-dialog/author-login-dialog.component';
+import { AuthorRegisterDialogComponent } from './author-register-dialog/author-register-dialog.component';
+import { AuthorLogoutDialogComponent } from './author-logout-dialog/author-logout-dialog.component';
 
 //Angular Material Components
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,12 +26,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 //3rd-Party Components
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
-import { AuthorLoginDialogComponent } from './author-login-dialog/author-login-dialog.component';
-import { AuthorRegisterDialogComponent } from './author-register-dialog/author-register-dialog.component';
-import { AuthorLogoutDialogComponent } from './author-logout-dialog/author-logout-dialog.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AuthorLogoutDialogComponent } from './author-logout-dialog/author-logou
     MatNativeDateModule,
     HttpClientModule,
     NgxMatTimepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-MY' }
