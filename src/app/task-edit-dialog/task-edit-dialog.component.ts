@@ -53,7 +53,7 @@ export class TaskEditDialogComponent {
               message = 'Error communicating with server. Please check your internet connection.';
               break;
             default:
-              message = 'Update task failed. An unknown error occured';
+              message = 'An unknown error occured';
           }
 
           this.snackbarService.openSnackBar(message);

@@ -46,7 +46,7 @@ export class TaskListComponent {
               message = 'An error occured on our end. Please try again later.';
               break;
             case 0:
-              message = 'Unable to fetch tasks. Error communicating with server. Please check your internet connection.';
+              message = 'Error communicating with server. Please check your internet connection.';
               break;
             default:
               message = 'An unknown error occured';

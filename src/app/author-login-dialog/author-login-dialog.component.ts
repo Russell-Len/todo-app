@@ -42,7 +42,7 @@ export class AuthorLoginDialogComponent {
               message = 'Login failed. Please ensure your credentials are valid.';
               break;
             case 400:
-              message = 'A bad request was made.';
+              message = 'Login failed. A bad request was made.';
               break;
             case 500:
               message = 'An error occured on our end. Please try again later.';

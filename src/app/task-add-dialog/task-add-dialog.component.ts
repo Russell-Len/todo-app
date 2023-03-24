@@ -56,7 +56,7 @@ export class TaskAddDialogComponent {
               message = 'An error occured on our end. Please try again later.';
               break;
             case 0:
-              message = 'Add task failed. Error communicating with server. Please check your internet connection.';
+              message = 'Error communicating with server. Please check your internet connection.';
               break;
             default:
               message = 'An unknown error occured';
