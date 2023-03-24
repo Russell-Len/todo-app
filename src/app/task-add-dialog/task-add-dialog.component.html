@@ -3,40 +3,40 @@
 <div mat-dialog-content class="dialog-form">
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Title</mat-label>
-        <input matInput [(ngModel)]="newTask.title" maxlength="250" required>
+        <input matInput [(ngModel)]="newTask.title" maxlength="250" [disabled]="isProcessing" required>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="newTask.description" maxlength="2000"></textarea>
+        <textarea matInput [(ngModel)]="newTask.description" maxlength="2000" [disabled]="isProcessing"></textarea>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Category</mat-label>
-        <input matInput [(ngModel)]="newTask.category" maxlength="2000" required>
+        <input matInput [(ngModel)]="newTask.category" maxlength="2000" [disabled]="isProcessing" required>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Due Date</mat-label>
-        <input matInput [matDatepicker]="datePicker" [(ngModel)]="newTask.dueDate" (click)="datePicker.open()" required
-            readonly>
+        <input matInput [matDatepicker]="datePicker" [(ngModel)]="newTask.dueDate" (click)="datePicker.open()"
+            [disabled]="isProcessing" required readonly>
         <mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
         <mat-datepicker #datePicker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Due Time</mat-label>
-        <input matInput [(ngModel)]="dueTime" [format]="24" [ngxMatTimepicker]="timePicker" required readonly />
+        <input matInput [(ngModel)]="dueTime" [format]="24" [ngxMatTimepicker]="timePicker" [disabled]="isProcessing"
+            required readonly />
         <ngx-mat-timepicker-toggle matIconSuffix [for]="timePicker"></ngx-mat-timepicker-toggle>
         <ngx-mat-timepicker #timePicker></ngx-mat-timepicker>
     </mat-form-field>
-
 </div>
 
 <div mat-dialog-actions class="dialog-actions">
     <button mat-button (click)="onCancelClick()">Cancel</button>
-    <button mat-button color="primary" (click)="onProceedClick()" 
-    [disabled]="newTask.title.trim() ==='' || newTask.category.trim() === ''">
+    <button mat-button color="primary" (click)="onProceedClick()"
+        [disabled]="isProcessing || newTask.title.trim() ==='' || newTask.category.trim() === ''">
         Proceed
     </button>
 </div>

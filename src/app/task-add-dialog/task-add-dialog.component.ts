@@ -21,12 +21,16 @@ export class TaskAddDialogComponent {
 
   public dueTime: string = "12:00";
 
+  public isProcessing: boolean;
+
   constructor(
     public dialogRef: MatDialogRef<TaskAddDialogComponent>,
     private taskService: TaskService,
     public snackbarService: SnackbarService,
     public authService: AuthService
-  ) { }
+  ) {
+    this.isProcessing = false;
+  }
 
   onCancelClick(): void {
     this.dialogRef.close();
@@ -35,11 +39,16 @@ export class TaskAddDialogComponent {
   onProceedClick(): void {
     this.newTask.dueDate = this.taskService.getDueDateTime(this.newTask.dueDate, this.dueTime);
 
+    this.isProcessing = true;
+
     this.taskService
       .addTask(this.newTask)
       .subscribe({
         next: () => {
           this.snackbarService.openSnackBar("Task added successfully!");
+
+          this.isProcessing = false;
+
           this.dialogRef.close();
         },
         error: (err) => {
@@ -62,6 +71,8 @@ export class TaskAddDialogComponent {
               message = 'An unknown error occured';
           }
 
+          this.isProcessing = false;
+          
           this.snackbarService.openSnackBar(message);
         }
       });
