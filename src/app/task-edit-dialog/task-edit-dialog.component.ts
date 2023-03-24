@@ -15,6 +15,8 @@ export class TaskEditDialogComponent {
 
   public isProcessing: boolean;
 
+  public categories: string[] = [];
+
   constructor(
     public dialogRef: MatDialogRef<TaskEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public taskToEdit: ITask,
@@ -22,7 +24,18 @@ export class TaskEditDialogComponent {
     public snackbarService: SnackbarService,
   ) {
     this.dueTime = moment(this.taskToEdit.dueDate).format('HH:mm');
+
     this.isProcessing = false;
+
+    this.fetchCategories();
+  }
+
+  private fetchCategories(): void {
+    this.taskService.getCategories().subscribe({
+      next: (result: string[]) => {
+        this.categories = result;
+      }
+    })
   }
 
   onCancelClick(): void {

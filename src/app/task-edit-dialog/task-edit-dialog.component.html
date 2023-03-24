@@ -28,7 +28,7 @@
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Category</mat-label>
         <input matInput [(ngModel)]="taskToEdit.category" #catField="ngModel" pattern="(.|\s)*\S(.|\s)*"
-            maxlength="2000" [disabled]="isProcessing" required>
+            maxlength="2000" [disabled]="isProcessing" [matAutocomplete]="auto" required>
         <mat-error *ngIf="catField.hasError('required')">
             Category is required.
         </mat-error>
@@ -38,6 +38,11 @@
         <mat-error *ngIf="catField.hasError('maxlength')">
             Title cannot exceed 2000 characters.
         </mat-error>
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let category of categories" [value]="category">
+                {{category}}
+            </mat-option>
+        </mat-autocomplete>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
