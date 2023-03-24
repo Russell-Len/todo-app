@@ -1,6 +1,12 @@
-<button mat-fab class="task-add-fab" matTooltip="Add New Task" color="primary" (click)="openAddDialog()">
-    <mat-icon>add</mat-icon>
-</button>
+<div class="fab-group">
+    <button mat-fab class="fab-actions" matTooltip="Refresh Tasks" color="primary" (click)=" fetchTasksList()">
+        <mat-icon>refresh</mat-icon>
+    </button>
+
+    <button mat-fab class="fab-actions" matTooltip="Add New Task" color="primary" (click)="openAddDialog()">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
 
 <div *ngIf="tasks.length; else noTasks">
     <div *ngFor="let task of tasks">

@@ -8,11 +8,16 @@
     justify-content: flex-end;
 }
 
-.task-add-fab {
+.fab-group {
     position: fixed !important;
-    bottom: 16px;
-    right: 16px;
+    bottom: 8px;
+    right: 8px;
     z-index: 1000;
+}
+
+.fab-actions {
+    display: block;
+    margin: 16px;
 }
 
 .no-task {
