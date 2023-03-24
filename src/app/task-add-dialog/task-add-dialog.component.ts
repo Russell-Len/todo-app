@@ -23,6 +23,8 @@ export class TaskAddDialogComponent {
 
   public isProcessing: boolean;
 
+  public categories: string[] = [];
+
   constructor(
     public dialogRef: MatDialogRef<TaskAddDialogComponent>,
     private taskService: TaskService,
@@ -30,6 +32,16 @@ export class TaskAddDialogComponent {
     public authService: AuthService
   ) {
     this.isProcessing = false;
+
+    this.fetchCategories();
+  }
+
+  private fetchCategories(): void {
+    this.taskService.getCategories().subscribe({
+      next: (result: string[]) => {
+        this.categories = result;
+      }
+    })
   }
 
   onCancelClick(): void {

@@ -18,6 +18,10 @@ export class TaskService {
         return this.http.get<ITask[]>(this.tasksApiUrl, this.authService.headers);
     }
 
+    getCategories(): Observable<string[]> {
+        return this.http.get<string[]>(`${this.tasksApiUrl}/categories`, this.authService.headers);
+    }
+
     addTask(newTask: ITask): Observable<any> {
         return this.http.post(this.tasksApiUrl, newTask, this.authService.headers);
     }

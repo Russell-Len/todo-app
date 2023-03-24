@@ -15,6 +15,7 @@ import { AuthorRegisterDialogComponent } from './author-register-dialog/author-r
 import { AuthorLogoutDialogComponent } from './author-logout-dialog/author-logout-dialog.component';
 
 //Angular Material Components
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon'
@@ -25,10 +26,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 //3rd-Party Components
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
@@ -65,6 +66,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     MatSnackBarModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
+    MatAutocompleteModule,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-MY' }
