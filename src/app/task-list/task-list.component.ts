@@ -18,15 +18,23 @@ export class TaskListComponent {
 
   public tasks: ITask[] = [];
 
+  public isFetchingTasks: boolean = false;
+
   ngOnInit(): void {
     this.fetchTasksList();
   }
 
   fetchTasksList(): void {
+    this.isFetchingTasks = true;
+
+    this.tasks = [];
+
     this.taskService
       .getTasks()
       .subscribe({
         next: (result: ITask[]) => {
+          this.isFetchingTasks = false;
+
           this.tasks = result.map(task => {
             task.dueDate = new Date(task.dueDate)
             return task;
@@ -34,6 +42,8 @@ export class TaskListComponent {
         },
         error: (err) => {
           let message: string = '';
+
+          this.isFetchingTasks = false;
 
           this.tasks = [];
 

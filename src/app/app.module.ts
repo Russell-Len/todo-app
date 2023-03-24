@@ -27,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 //3rd-Party Components
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
@@ -63,6 +64,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-MY' }

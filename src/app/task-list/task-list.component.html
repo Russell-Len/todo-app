@@ -8,39 +8,45 @@
     </button>
 </div>
 
-<div *ngIf="tasks.length; else noTasks">
-    <div *ngFor="let task of tasks">
-        <mat-card class="task">
-            <mat-card-header>
-                <mat-card-title>{{task.title}}</mat-card-title>
-                <mat-card-subtitle>Category: {{task.category}}</mat-card-subtitle>
-                <mat-card-subtitle>Due on: {{task.dueDate | date:'dd MMMM yyyy HH:mm'}}</mat-card-subtitle>
-                <mat-card-subtitle>
-                    Created on: {{task.created | date:'dd MMMM yyyy HH:mm'}}
-                    <span *ngIf="task.created != task.updated">
-                        (Updated on: {{task.updated | date:'dd MMMM yyyy HH:mm'}})
-                    </span>
-                </mat-card-subtitle>
-            </mat-card-header>
-
-            <mat-card-content>
-                <p>{{task.description}}</p>
-            </mat-card-content>
-
-            <mat-card-actions class="task-actions">
-                <button mat-button matTooltip="Edit Task" color="primary" (click)="openEditDialog(task)">
-                    <mat-icon>edit</mat-icon>
-                    Edit
-                </button>
-                <button mat-button matTooltip="Delete Task" color="warn" (click)="openDeleteDialog(task.id!)">
-                    <mat-icon>delete</mat-icon>
-                    Delete
-                </button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
+<div class="fetch-spinner" *ngIf="isFetchingTasks; else showTaskList">
+    <mat-spinner></mat-spinner>
 </div>
 
-<ng-template #noTasks>
-    <div class="no-task">No task(s) found. Start adding tasks by clicking on the "+" button.</div>
+<ng-template #showTaskList>
+    <div class="task-list" *ngIf="tasks.length; else noTasks">
+        <div *ngFor="let task of tasks">
+            <mat-card class="task">
+                <mat-card-header>
+                    <mat-card-title>{{task.title}}</mat-card-title>
+                    <mat-card-subtitle>Category: {{task.category}}</mat-card-subtitle>
+                    <mat-card-subtitle>Due on: {{task.dueDate | date:'dd MMMM yyyy HH:mm'}}</mat-card-subtitle>
+                    <mat-card-subtitle>
+                        Created on: {{task.created | date:'dd MMMM yyyy HH:mm'}}
+                        <span *ngIf="task.created != task.updated">
+                            (Updated on: {{task.updated | date:'dd MMMM yyyy HH:mm'}})
+                        </span>
+                    </mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <p>{{task.description}}</p>
+                </mat-card-content>
+
+                <mat-card-actions class="task-actions">
+                    <button mat-button matTooltip="Edit Task" color="primary" (click)="openEditDialog(task)">
+                        <mat-icon>edit</mat-icon>
+                        Edit
+                    </button>
+                    <button mat-button matTooltip="Delete Task" color="warn" (click)="openDeleteDialog(task.id!)">
+                        <mat-icon>delete</mat-icon>
+                        Delete
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+    <ng-template #noTasks>
+        <div class="no-task">No task(s) found. Start adding tasks by clicking on the "+" button.</div>
+    </ng-template>
 </ng-template>
