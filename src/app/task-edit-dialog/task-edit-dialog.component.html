@@ -3,17 +3,41 @@
 <div mat-dialog-content class="dialog-form">
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Title</mat-label>
-        <input matInput [(ngModel)]="taskToEdit.title" maxlength="250" [disabled]="isProcessing" required>
+        <input matInput [(ngModel)]="taskToEdit.title" pattern="(.|\s)*\S(.|\s)*" maxlength="250"
+            [disabled]="isProcessing" #titleField="ngModel" required>
+        <mat-error *ngIf="titleField.hasError('required')">
+            Title is required.
+        </mat-error>
+        <mat-error *ngIf="titleField.hasError('pattern')">
+            Title must contain at least one non-whitespace character.
+        </mat-error>
+        <mat-error *ngIf="titleField.hasError('maxlength')">
+            Title cannot exceed 250 characters.
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="taskToEdit.description" maxlength="2000" [disabled]="isProcessing"></textarea>
+        <textarea matInput [(ngModel)]="taskToEdit.description" #descField="ngModel" maxlength="2000"
+            [disabled]="isProcessing"></textarea>
+        <mat-error *ngIf="descField.hasError('maxlength')">
+            Title cannot exceed 2000 characters.
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Category</mat-label>
-        <input matInput [(ngModel)]="taskToEdit.category" maxlength="2000" [disabled]="isProcessing" required>
+        <input matInput [(ngModel)]="taskToEdit.category" #catField="ngModel" pattern="(.|\s)*\S(.|\s)*"
+            maxlength="2000" [disabled]="isProcessing" required>
+        <mat-error *ngIf="catField.hasError('required')">
+            Category is required.
+        </mat-error>
+        <mat-error *ngIf="catField.hasError('pattern')">
+            Category must contain at least one non-whitespace character.
+        </mat-error>
+        <mat-error *ngIf="catField.hasError('maxlength')">
+            Title cannot exceed 2000 characters.
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -36,7 +60,7 @@
 <div mat-dialog-actions class="dialog-actions">
     <button mat-button (click)="onCancelClick()">Cancel</button>
     <button mat-button color="primary" (click)="onProceedClick()"
-        [disabled]="isProcessing || taskToEdit.title.trim() ==='' || taskToEdit.category.trim() === ''">
+        [disabled]="isProcessing || !titleField.valid || !descField.valid || !catField.valid">
         Proceed
     </button>
 </div>
