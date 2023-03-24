@@ -8,17 +8,17 @@
     <span class="toolbar-spacer"></span>
 
     <div *ngIf="!authService.isLoggedIn; else loggedIn">
-        <button mat-button (click)="openLoginDialog()">
+        <button mat-button matTooltip="Login as an existing user" (click)="openLoginDialog()">
             Login
         </button>
 
-        <button mat-button (click)="openRegisterDialog()">
+        <button mat-button matTooltip="Register as a new user" (click)="openRegisterDialog()">
             Register
         </button>
     </div>
 
     <ng-template #loggedIn>
-        <button mat-button (click)="openLogoutDialog()">
+        <button mat-button matTooltip="Logout" (click)="openLogoutDialog()">
             Logout
         </button>
     </ng-template>
