@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ITask } from '../model/ITask';
+import { AuthService } from '../services/auth.service';
 import { SnackbarService } from '../services/snackbar.service';
 import { TaskService } from '../services/task.service';
 import { TaskAddDialogComponent } from '../task-add-dialog/task-add-dialog.component';
@@ -16,7 +17,12 @@ export class TaskListComponent {
 
   public current = new Date();
 
-  constructor(public dialog: MatDialog, private taskService: TaskService, private snackbarService: SnackbarService) { }
+  constructor(
+    public dialog: MatDialog,
+    private taskService: TaskService,
+    private snackbarService: SnackbarService,
+    private authService: AuthService
+  ) { }
 
   public tasks: ITask[] = [];
 
@@ -27,6 +33,9 @@ export class TaskListComponent {
   }
 
   fetchTasksList(): void {
+    
+    if (!this.authService.isLoggedIn) return;
+
     this.isFetchingTasks = true;
 
     this.tasks = [];
