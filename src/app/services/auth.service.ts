@@ -53,7 +53,7 @@ export class AuthService {
     this.tokenExpirationCounter(this.timeout);
   }
 
-  tokenExpirationCounter(timeout: any): void {
+  tokenExpirationCounter(timeout: number): void {
     this.tokenSubscription.unsubscribe();
 
     this.tokenSubscription = of(null)
