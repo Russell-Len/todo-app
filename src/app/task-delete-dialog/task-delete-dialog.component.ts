@@ -10,23 +10,32 @@ import { TaskService } from '../services/task.service';
 })
 export class TaskDeleteDialogComponent {
 
+  public isProcessing: boolean;
+
   constructor(
     public dialogRef: MatDialogRef<TaskDeleteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public id: number,
     private taskService: TaskService,
     public snackbarService: SnackbarService,
-  ) { }
+  ) {
+    this.isProcessing = false;
+  }
 
   onCancelClick(): void {
     this.dialogRef.close();
   }
 
   onProceedClick(): void {
+    this.isProcessing = true;
+
     this.taskService
       .deleteTask(this.id)
       .subscribe({
         next: () => {
           this.snackbarService.openSnackBar("Task deleted successfully!");
+
+          this.isProcessing = false;
+
           this.dialogRef.close();
         },
         error: (err) => {
@@ -48,6 +57,8 @@ export class TaskDeleteDialogComponent {
             default:
               message = 'An unknown error occured';
           }
+
+          this.isProcessing = false;
 
           this.snackbarService.openSnackBar(message);
         }

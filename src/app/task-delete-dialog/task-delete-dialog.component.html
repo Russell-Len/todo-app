@@ -6,5 +6,5 @@
 
 <div mat-dialog-actions class="dialog-actions">
     <button mat-button (click)="onCancelClick()">Cancel</button>
-    <button mat-button color="primary" (click)="onProceedClick()">Proceed</button>
+    <button mat-button color="primary" (click)="onProceedClick()" [disabled]="isProcessing">Proceed</button>
 </div>
