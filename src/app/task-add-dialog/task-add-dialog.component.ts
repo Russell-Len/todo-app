@@ -72,7 +72,7 @@ export class TaskAddDialogComponent {
           }
 
           this.isProcessing = false;
-          
+
           this.snackbarService.openSnackBar(message);
         }
       });
