@@ -1,8 +1,9 @@
 <mat-toolbar class="toolbar" color="primary">
-    <span *ngIf="!authService.isLoggedIn; else showHello">ToDo App</span>
-    <ng-template #showHello>
-        <span>{{"Hello, " + authService.author.username + "."}}</span>
-    </ng-template>
+    <span>ToDo App</span>
+
+    <span class="toolbar-spacer"></span>
+
+    <span *ngIf="authService.isLoggedIn">Hello, {{authService.author.username}}.</span>
 
     <span class="toolbar-spacer"></span>
 
