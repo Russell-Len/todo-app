@@ -17,11 +17,14 @@
         <div *ngFor="let task of tasks">
             <mat-card class="task">
                 <mat-card-header>
-                    <mat-card-title [ngStyle]="{'color': (current > task.dueDate) ? '#FF0000' : '#000000'}">
-                        {{task.title}}
-                    </mat-card-title>
+                    <mat-card-title> {{task.title}}</mat-card-title>
+                    
                     <mat-card-subtitle>Category: {{task.category}}</mat-card-subtitle>
-                    <mat-card-subtitle>Due on: {{task.dueDate | date:'dd MMMM yyyy HH:mm'}}</mat-card-subtitle>
+
+                    <mat-card-subtitle [style.color]="current>task.dueDate ? 'red': ''">
+                        Due on: {{task.dueDate | date:'dd MMMM yyyy HH:mm'}}
+                    </mat-card-subtitle>
+
                     <mat-card-subtitle>
                         Created on: {{task.created | date:'dd MMMM yyyy HH:mm'}}
                         <span *ngIf="task.created != task.updated">
