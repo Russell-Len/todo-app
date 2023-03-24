@@ -10,6 +10,9 @@ import { SnackbarService } from '../services/snackbar.service';
   styleUrls: ['./author-register-dialog.component.css']
 })
 export class AuthorRegisterDialogComponent {
+
+  public isProcessing: boolean;
+
   public credentials: ICredentials = {
     username: '', password: ''
   }
@@ -18,17 +21,24 @@ export class AuthorRegisterDialogComponent {
     public dialogRef: MatDialogRef<AuthorRegisterDialogComponent>,
     public authService: AuthService,
     public snackbarService: SnackbarService,
-  ) { }
+  ) {
+    this.isProcessing = false;
+  }
 
   onCancelClick(): void {
     this.dialogRef.close();
   }
 
   onRegisterClick(): void {
+    this.isProcessing = true;
+
     this.authService.register(this.credentials)
       .subscribe({
         next: () => {
           this.snackbarService.openSnackBar("Registered successfully!");
+
+          this.isProcessing = false;
+
           this.dialogRef.close();
         },
         error: (err) => {
@@ -50,6 +60,9 @@ export class AuthorRegisterDialogComponent {
             default:
               message = 'An unknown error occured';
           }
+
+          this.isProcessing = false;
+
           this.snackbarService.openSnackBar(message);
         }
       });
