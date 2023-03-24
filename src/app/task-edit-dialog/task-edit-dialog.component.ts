@@ -51,6 +51,9 @@ export class TaskEditDialogComponent {
             case 401:
               message = 'Update task failed. Please ensure your credentials are valid.';
               break;
+            case 404:
+              message = 'Update task failed. The requested task was not found.';
+              break;
             case 400:
               message = 'Update task failed. A bad request was made.';
               break;
