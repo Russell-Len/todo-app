@@ -29,7 +29,7 @@ export class AuthService {
   private timeout!: number;
 
   constructor(private http: HttpClient, private snackbarService: SnackbarService, private dialogRef: MatDialog) {
-    if (this.token !== null) {
+    if (this.token) {
       this.setSession(this.token);
     }
   }
