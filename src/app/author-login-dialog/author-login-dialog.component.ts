@@ -11,6 +11,8 @@ import { SnackbarService } from '../services/snackbar.service';
 })
 export class AuthorLoginDialogComponent {
 
+  public isProcessing: boolean;
+
   public credentials: ICredentials = {
     username: '', password: ''
   }
@@ -19,19 +21,26 @@ export class AuthorLoginDialogComponent {
     public dialogRef: MatDialogRef<AuthorLoginDialogComponent>,
     public authService: AuthService,
     public snackbarService: SnackbarService,
-  ) { }
+  ) {
+    this.isProcessing = false;
+  }
 
   onCancelClick(): void {
     this.dialogRef.close();
   }
 
   onLoginClick(): void {
+    this.isProcessing = true;
+
     this.authService.login(this.credentials)
       .subscribe({
         next: (token: string) => {
           this.authService.setSession(token);
 
           this.snackbarService.openSnackBar("Logged in successfully!");
+
+          this.isProcessing = false;
+
           this.dialogRef.close();
         },
         error: (err) => {
@@ -53,6 +62,8 @@ export class AuthorLoginDialogComponent {
             default:
               message = 'An unknown error occured';
           }
+          
+          this.isProcessing = false;
 
           this.snackbarService.openSnackBar(message);
         }

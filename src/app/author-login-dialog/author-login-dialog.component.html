@@ -15,7 +15,7 @@
 <div mat-dialog-actions class="dialog-actions">
     <button mat-button (click)="onCancelClick()">Cancel</button>
     <button mat-button color="primary" (click)="onLoginClick()"
-        [disabled]="credentials.username.trim() === '' || credentials.password.trim() === ''">
+        [disabled]="isProcessing || credentials.username.trim() === '' || credentials.password.trim() === ''">
         Login
     </button>
 </div>
