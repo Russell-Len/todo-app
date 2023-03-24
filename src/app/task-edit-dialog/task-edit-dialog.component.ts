@@ -11,7 +11,9 @@ import { TaskService } from '../services/task.service';
   styleUrls: ['./task-edit-dialog.component.css']
 })
 export class TaskEditDialogComponent {
-  public dueTime
+  public dueTime;
+
+  public isProcessing: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<TaskEditDialogComponent>,
@@ -19,7 +21,8 @@ export class TaskEditDialogComponent {
     private taskService: TaskService,
     public snackbarService: SnackbarService,
   ) {
-    this.dueTime = moment(this.taskToEdit.dueDate).format('HH:mm')
+    this.dueTime = moment(this.taskToEdit.dueDate).format('HH:mm');
+    this.isProcessing = false;
   }
 
   onCancelClick(): void {
@@ -29,11 +32,16 @@ export class TaskEditDialogComponent {
   onProceedClick(): void {
     this.taskToEdit.dueDate = this.taskService.getDueDateTime(this.taskToEdit.dueDate, this.dueTime);
 
+    this.isProcessing = true;
+
     this.taskService
       .editTask(this.taskToEdit)
       .subscribe({
         next: () => {
           this.snackbarService.openSnackBar("Task updated successfully!");
+
+          this.isProcessing = false;
+
           this.dialogRef.close();
         },
         error: (err) => {
@@ -55,6 +63,8 @@ export class TaskEditDialogComponent {
             default:
               message = 'An unknown error occured';
           }
+
+          this.isProcessing = false;
 
           this.snackbarService.openSnackBar(message);
         }
