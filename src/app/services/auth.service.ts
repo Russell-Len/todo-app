@@ -60,7 +60,7 @@ export class AuthService {
       .pipe(delay(timeout))
       .subscribe(() => {
         this.logout();
-        this.snackbarService.openSnackBar("Session expired. You have been automatically logged out.", 30);
+        this.snackbarService.openSnackBar("Your session has expired. You have been automatically logged out.", 0);
       });
   }
 
