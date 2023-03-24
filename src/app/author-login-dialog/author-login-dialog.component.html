@@ -3,19 +3,30 @@
 <div mat-dialog-content class="dialog-form">
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="credentials.username" [disabled]="isProcessing" required>
+        <input matInput [(ngModel)]="credentials.username" pattern="^\S*$" [disabled]="isProcessing"
+            #usernameField="ngModel" required>
+        <mat-error *ngIf="usernameField.hasError('required')">
+            Username is required.
+        </mat-error>
+        <mat-error *ngIf="usernameField.hasError('pattern')">
+            Username cannot contain any whitespaces.
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Password</mat-label>
-        <input matInput type="password" [(ngModel)]="credentials.password" minlength="8"  [disabled]="isProcessing" required>
+        <input matInput type="password" [(ngModel)]="credentials.password" [disabled]="isProcessing"
+            #passwordField="ngModel" required>
+        <mat-error *ngIf="passwordField.hasError('required')">
+            Password is required.
+        </mat-error>
     </mat-form-field>
 </div>
 
 <div mat-dialog-actions class="dialog-actions">
     <button mat-button (click)="onCancelClick()">Cancel</button>
     <button mat-button color="primary" (click)="onLoginClick()"
-        [disabled]="isProcessing || credentials.username.trim() === '' || credentials.password.trim() === ''">
+        [disabled]="isProcessing || !usernameField.valid || !passwordField.valid">
         Login
     </button>
 </div>

@@ -3,7 +3,7 @@
 <div mat-dialog-content class="dialog-form">
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="credentials.username" pattern="^\S*$/" [disabled]="isProcessing" pattern="^\S*$"
+        <input matInput [(ngModel)]="credentials.username" [disabled]="isProcessing" pattern="^\S*$"
             #usernameField="ngModel" required>
         <mat-error *ngIf="usernameField.hasError('required')">
             Username is required.
