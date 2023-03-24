@@ -14,6 +14,8 @@ import { TaskEditDialogComponent } from '../task-edit-dialog/task-edit-dialog.co
 })
 export class TaskListComponent {
 
+  public current = new Date();
+
   constructor(public dialog: MatDialog, private taskService: TaskService, private snackbarService: SnackbarService) { }
 
   public tasks: ITask[] = [];
@@ -28,6 +30,7 @@ export class TaskListComponent {
     this.isFetchingTasks = true;
 
     this.tasks = [];
+    this.current = new Date();
 
     this.taskService
       .getTasks()
