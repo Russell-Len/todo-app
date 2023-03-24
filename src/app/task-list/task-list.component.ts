@@ -35,6 +35,8 @@ export class TaskListComponent {
         error: (err) => {
           let message: string = '';
 
+          this.tasks = [];
+
           switch (err.status) {
             case 401:
               message = 'Unable to fetch tasks. Please ensure your credentials are valid.';
