@@ -4,6 +4,7 @@
     align-items: flex-start;
     min-width: 25vw;
     margin: 8px;
+    min-height: 14vw;
 }
 
 .dialog-form-field {

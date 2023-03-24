@@ -3,19 +3,34 @@
 <div mat-dialog-content class="dialog-form">
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="credentials.username" [disabled]="isProcessing" required>
+        <input matInput [(ngModel)]="credentials.username" pattern="^\S*$/" [disabled]="isProcessing" pattern="^\S*$"
+            #usernameField="ngModel" required>
+        <mat-error *ngIf="usernameField.hasError('required')">
+            Username is required.
+        </mat-error>
+        <mat-error *ngIf="usernameField.hasError('pattern')">
+            Username cannot contain any whitespaces.
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="dialog-form-field">
         <mat-label>Password</mat-label>
-        <input matInput type="password" [(ngModel)]="credentials.password" minlength="8" [disabled]="isProcessing" required>
+        <input matInput type="password" [(ngModel)]="credentials.password" [disabled]="isProcessing"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.])[A-Za-z\d@$!%*#?&.]{8,}$" #passwordField="ngModel"
+            required>
+        <mat-error *ngIf="passwordField.hasError('required')">
+            Password is required.
+        </mat-error>
+        <mat-error *ngIf="passwordField.hasError('pattern')">
+            Password must be minimum 8 characters (Including at least 1 character, 1 number, and 1 special character).
+        </mat-error>
     </mat-form-field>
 </div>
 
 <div mat-dialog-actions class="dialog-actions">
     <button mat-button (click)="onCancelClick()">Cancel</button>
     <button mat-button color="primary" (click)="onRegisterClick()"
-        [disabled]="isProcessing || credentials.username.trim() === '' || credentials.password === ''">
+        [disabled]="isProcessing || !usernameField.valid || !passwordField.valid">
         Register
     </button>
 </div>
