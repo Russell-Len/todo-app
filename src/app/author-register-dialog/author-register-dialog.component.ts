@@ -35,7 +35,7 @@ export class AuthorRegisterDialogComponent {
     this.authService.register(this.credentials)
       .subscribe({
         next: () => {
-          this.snackbarService.openSnackBar("Registered successfully!");
+          this.snackbarService.openSnackBar("Registered successfully! You may proceed to login.");
 
           this.isProcessing = false;
 
