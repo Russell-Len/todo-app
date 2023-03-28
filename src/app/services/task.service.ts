@@ -38,4 +38,27 @@ export class TaskService {
         let dueDateTime = `${dueDate.toDateString()} ${dueTime}`;
         return new Date(dueDateTime);
     }
+
+    getTaskAPIErrorResponse(err: any): string {
+        let message: string = '';
+
+        switch (err.status) {
+            case 400:
+            case 401:
+            case 404:
+                message = err.error;
+                break;
+            case 500:
+                message = 'An error occured on our end. Please try again later.';
+                break;
+            case 0:
+                message = 'Error communicating with server. Please check your internet connection.';
+                break;
+            default:
+                message = 'An unknown error occured.';
+        }
+
+        return message;
+    }
+
 }
